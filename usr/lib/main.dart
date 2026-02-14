@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'screens/test_checklist_screen.dart';
+import 'screens/ship_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -10,7 +12,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'CouldAI User App',
+      title: 'Job Notification Tracker',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
@@ -19,6 +21,8 @@ class MyApp extends StatelessWidget {
       initialRoute: '/',
       routes: {
         '/': (context) => const HomeScreen(),
+        '/jt/07-test': (context) => const TestChecklistScreen(),
+        '/jt/08-ship': (context) => const ShipScreen(),
       },
     );
   }
@@ -31,7 +35,7 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('CouldAI User App'),
+        title: const Text('Job Notification Tracker'),
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
       ),
       body: Center(
@@ -41,27 +45,29 @@ class HomeScreen extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Icon(
-                Icons.rocket_launch_outlined,
+                Icons.work_outline,
                 size: 64,
                 color: Theme.of(context).colorScheme.primary,
               ),
               const SizedBox(height: 24),
               const Text(
-                'Welcome to CouldAI User App',
+                'Job Notification Tracker',
                 style: TextStyle(
                   fontSize: 24,
                   fontWeight: FontWeight.bold,
                 ),
                 textAlign: TextAlign.center,
               ),
-              const SizedBox(height: 16),
-              const Text(
-                'I am ready to help you build your application. Please share your design requirements or screenshots so we can proceed!',
-                style: TextStyle(
-                  fontSize: 16,
-                  color: Colors.grey,
+              const SizedBox(height: 32),
+              ElevatedButton.icon(
+                onPressed: () {
+                  Navigator.pushNamed(context, '/jt/07-test');
+                },
+                icon: const Icon(Icons.checklist),
+                label: const Text('Go to Test Checklist'),
+                style: ElevatedButton.styleFrom(
+                  padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
                 ),
-                textAlign: TextAlign.center,
               ),
             ],
           ),
